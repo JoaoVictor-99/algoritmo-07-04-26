@@ -1,0 +1,46 @@
+import random
+
+numero_secreto = random.randint(1, 100)
+tentativas = 0
+acertou = False
+
+print("FASE 1: JOGO DE ADIVINHAÇÃO")
+print("Tente adivinhar o número de 1 a 100.")
+
+while not acertou:
+    chute = int(input("Qual seu palpite? "))
+    tentativas += 1
+    
+    if chute == numero_secreto:
+        print(f"Boa! Você acertou em {tentativas} tentativas.")
+        acertou = True
+    elif chute < numero_secreto:
+        print("Dica: O número é maior.")
+    else:
+        print("Dica: O número é menor.")
+
+print("-" * 30)
+
+print("Analisando número")
+numeros = []
+
+for i in range(8):
+    num = int(input(f"Digite o {i+1}º número: "))
+    numeros.append(num)
+
+ja_avisados = []
+tem_repetido = False
+
+print("Resultados da análise:")
+for n in numeros:
+    quantidade = numeros.count(n)
+    
+    if quantidade > 1 and n not in ja_avisados:
+        print(f"O número {n} apareceu {quantidade} vezes.")
+        ja_avisados.append(n)
+        tem_repetido = True
+
+if not tem_repetido:
+    print("Você não repetiu nenhum número")
+
+print("acabou")
